@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindle Book Archive - Discover Your Next Great Read</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@300;400;500;600;700&family=Bookerly:ital,wght@0,400;0,700;1,400&display=swap" as="style">
+    
+    <!-- Meta tags for SEO and social sharing -->
+    <meta name="description" content="Fast, beautiful book search with Kindle-inspired design. Discover millions of books, get AI summaries, and find your next great read.">
+    <meta name="theme-color" content="#232F3E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📚%3C/text%3E%3C/svg%3E">
+    
+    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@300;400;500;600;700&family=Bookerly:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Critical CSS inline for performance -->
+    <style>
+        /* Critical above-the-fold styles */
+        body { margin: 0; font-family: 'Amazon Ember', -apple-system, BlinkMacSystemFont, sans-serif; background: #fafafa; }
+        .loader { display: none; }
+        .hero { background: linear-gradient(135deg, #232F3E 0%, #3b4d61 100%); color: white; padding: 4rem 2rem; text-align: center; }
+        .search-container { max-width: 600px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="kindle-logo">📚</span>
+                    Book Archive
+                </h1>
+                <p class="hero-subtitle">Discover millions of books with AI-powered insights</p>
+                
+                <!-- Search Form -->
+                <div class="search-container">
+                    <form id="search-form" class="search-form">
+                        <div class="search-input-group">
+                            <input 
+                                type="text" 
+                                id="search-input" 
+                                placeholder="Search by title, author, ISBN, or keyword..." 
+                                class="search-input"
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+                            <button type="submit" class="search-button" aria-label="Search books">
+                                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="m21 21-4.35-4.35"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="search-suggestions">
+                            <span class="suggestion-tag" data-query="fiction">Fiction</span>
+                            <span class="suggestion-tag" data-query="non-fiction">Non-Fiction</span>
+                            <span class="suggestion-tag" data-query="programming">Programming</span>
+                            <span class="suggestion-tag" data-query="science">Science</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loader" class="loader">
+                <div class="loading-animation">
+                    <div class="book-loading">
+                        <div class="book-pages"></div>
+                        <div class="book-pages"></div>
+                        <div class="book-pages"></div>
+                    </div>
+                </div>
+                <p id="loader-message" class="loader-message">Searching through millions of books...</p>
+            </div>
+            
+            <!-- Error Message -->
+            <div id="error-message" class="error-message hidden">
+                <div class="error-content">
+                    <svg class="error-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <h3>Oops! Something went wrong</h3>
+                    <p id="error-text"></p>
+                    <button id="retry-button" class="retry-button">Try Again</button>
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div id="search-results" class="search-results hidden">
+                <div class="results-header">
+                    <h2 id="results-title" class="results-title"></h2>
+                    <div class="results-meta">
+                        <span id="results-count" class="results-count"></span>
+                        <div class="view-toggle">
+                            <button id="grid-view" class="view-button active" aria-label="Grid view">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <rect x="3" y="3" width="7" height="7"/>
+                                    <rect x="14" y="3" width="7" height="7"/>
+                                    <rect x="14" y="14" width="7" height="7"/>
+                                    <rect x="3" y="14" width="7" height="7"/>
+                                </svg>
+                            </button>
+                            <button id="list-view" class="view-button" aria-label="List view">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <line x1="8" y1="6" x2="21" y2="6"/>
+                                    <line x1="8" y1="12" x2="21" y2="12"/>
+                                    <line x1="8" y1="18" x2="21" y2="18"/>
+                                    <line x1="3" y1="6" x2="3.01" y2="6"/>
+                                    <line x1="3" y1="12" x2="3.01" y2="12"/>
+                                    <line x1="3" y1="18" x2="3.01" y2="18"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="books-grid" class="books-grid">
+                    <!-- Book cards will be dynamically inserted here -->
+                </div>
+                
+                <!-- Pagination -->
+                <nav id="pagination" class="pagination hidden">
+                    <!-- Pagination will be dynamically inserted here -->
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI Summary Modal -->
+    <div id="summary-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <span class="ai-icon">✨</span>
+                    AI Book Summary
+                </h3>
+                <button id="close-modal" class="close-button" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="summary-loading" class="summary-loading">
+                    <div class="ai-thinking">
+                        <div class="thinking-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <p>AI is analyzing the book...</p>
+                </div>
+                <div id="summary-content" class="summary-content hidden">
+                    <div class="book-info">
+                        <img id="summary-book-cover" class="summary-cover" src="" alt="">
+                        <div class="book-details">
+                            <h4 id="summary-book-title" class="summary-title"></h4>
+                            <p id="summary-book-author" class="summary-author"></p>
+                        </div>
+                    </div>
+                    <div class="summary-text">
+                        <p id="summary-text-content"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top hidden" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5,12 12,5 19,12"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="/js/app.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/js/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(registrationError => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
