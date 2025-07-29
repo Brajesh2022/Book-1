@@ -47,17 +47,31 @@ The application follows Kindle's design principles:
 
 ## 🛠️ Installation & Setup
 
-### Prerequisites
-- Node.js 16+ 
+### 🚀 Quick Deploy to Vercel (Recommended)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Brajesh2022/Book-1)
+
+**Ready to deploy in 2 minutes!** 
+1. Click the button above
+2. Connect your GitHub account
+3. Deploy automatically
+4. Your app will be live at `https://your-project-name.vercel.app`
+
+📖 **[Complete Deployment Guide](DEPLOYMENT.md)** | ✅ **[Deployment Checklist](DEPLOYMENT_CHECKLIST.md)**
+
+### 💻 Local Development
+
+#### Prerequisites
+- Node.js 18+ 
 - npm or yarn
 
-### 1. Clone the Repository
+#### 1. Clone the Repository
 ```bash
 git clone https://github.com/Brajesh2022/Book-1.git
 cd Book-1
 ```
 
-### 2. Install Dependencies
+#### 2. Install Dependencies
 ```bash
 # Install backend dependencies
 npm install
@@ -68,7 +82,7 @@ npm install
 cd ..
 ```
 
-### 3. Environment Configuration
+#### 3. Environment Configuration
 Create a `.env` file in the root directory:
 ```env
 NODE_ENV=development
@@ -82,7 +96,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 CACHE_TTL=600
 ```
 
-### 4. Start the Application
+#### 4. Start the Application
 ```bash
 # Start both backend and frontend concurrently
 npm run dev

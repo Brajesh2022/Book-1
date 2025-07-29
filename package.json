@@ -1,7 +1,7 @@
 {
   "name": "kindle-book-search",
-  "version": "1.0.0",
-  "description": "A modern, fast book search application with Kindle-inspired design",
+  "version": "2.0.0",
+  "description": "A modern, fast book search application with Kindle-inspired design - Vercel Ready",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,6 +9,7 @@
     "server": "nodemon server.js",
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
+    "vercel-build": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +22,9 @@
     "kindle",
     "react",
     "express",
-    "nodejs"
+    "nodejs",
+    "vercel",
+    "serverless"
   ],
   "author": "",
   "license": "ISC",
@@ -45,5 +48,8 @@
   "devDependencies": {
     "nodemon": "^3.0.2",
     "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "name": "kindle-book-archive-api",
+  "version": "1.0.0",
+  "description": "Serverless API functions for Kindle Book Archive",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
