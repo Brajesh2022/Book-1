@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 247 244 237;
+    --foreground: 42 42 42;
+    --card: 255 255 255;
+    --card-foreground: 42 42 42;
+    --popover: 255 255 255;
+    --popover-foreground: 42 42 42;
+    --primary: 228 120 51;
+    --primary-foreground: 255 255 255;
+    --secondary: 240 237 230;
+    --secondary-foreground: 42 42 42;
+    --muted: 240 237 230;
+    --muted-foreground: 118 118 118;
+    --accent: 240 237 230;
+    --accent-foreground: 42 42 42;
+    --destructive: 220 38 38;
+    --destructive-foreground: 255 255 255;
+    --border: 221 214 193;
+    --input: 221 214 193;
+    --ring: 228 120 51;
+    --radius: 0.5rem;
+  }
+
+  * {
+    border-color: #ddd6c1;
+  }
+
+  body {
+    @apply bg-kindle-paper text-kindle-text font-serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .kindle-card {
+    @apply bg-white border border-kindle-border rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:border-kindle-accent/30;
+  }
+
+  .kindle-button {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+
+  .kindle-button-primary {
+    @apply kindle-button bg-kindle-accent text-white hover:bg-kindle-accent/90;
+  }
+
+  .kindle-button-secondary {
+    @apply kindle-button bg-kindle-hover text-kindle-text hover:bg-kindle-border;
+  }
+
+  .book-cover {
+    @apply relative overflow-hidden rounded-md shadow-md hover:shadow-lg transition-all duration-300;
+  }
+
+  .book-cover::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .book-cover:hover::after {
+    @apply opacity-100;
+  }
+
+  .search-input {
+    @apply flex h-10 w-full rounded-md border border-kindle-border bg-white px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-kindle-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kindle-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .prose {
+    @apply text-kindle-text max-w-none;
+  }
+
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply text-kindle-dark font-serif;
+  }
+
+  .prose p {
+    @apply leading-relaxed;
+  }
+
+  .animate-book-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:-translate-y-2;
+  }
+
+  .loading-dots {
+    @apply inline-flex space-x-1;
+  }
+
+  .loading-dots > div {
+    @apply w-2 h-2 bg-kindle-accent rounded-full animate-pulse;
+    animation-delay: calc(var(--i) * 0.1s);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-kindle-paper;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-kindle-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-kindle-accent/50;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}

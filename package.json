@@ -1,27 +1,37 @@
 {
-  "name": "kindle-book-search",
+  "name": "book-archive",
   "version": "1.0.0",
-  "description": "A modern, fast book search application with Kindle-inspired design",
-  "main": "server.js",
+  "private": true,
   "scripts": {
-    "start": "node server.js",
-    "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\"",
-    "server": "nodemon server.js",
-    "client": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "^15.1.0",
+    "next": "^15.1.0",
+    "postcss": "^8.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Brajesh2022/Book-1.git"
   },
   "keywords": [
-    "books",
-    "search",
+    "nextjs",
+    "book-search",
     "kindle",
-    "react",
-    "express",
-    "nodejs"
+    "reading"
   ],
   "author": "",
   "license": "ISC",
@@ -29,21 +39,5 @@
     "url": "https://github.com/Brajesh2022/Book-1/issues"
   },
   "homepage": "https://github.com/Brajesh2022/Book-1#readme",
-  "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "helmet": "^7.1.0",
-    "compression": "^1.7.4",
-    "morgan": "^1.10.0",
-    "redis": "^4.6.12",
-    "node-cache": "^5.1.2",
-    "axios": "^1.6.2",
-    "cheerio": "^1.0.0-rc.12",
-    "dotenv": "^16.3.1",
-    "express-rate-limit": "^7.1.5"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.2",
-    "concurrently": "^8.2.2"
-  }
+  "description": "A fast, beautiful book search application with Kindle-inspired design"
 }

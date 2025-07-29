@@ -1,227 +1,186 @@
-# 📚 Kindle Book Archive
+# 📚 Book Archive
 
-A modern, fast book search application with Kindle-inspired design, built with React and Express.js. Features AI-powered summaries, responsive design, and optimized performance.
+A beautiful, fast book search application with Kindle-inspired design. Built with Next.js, TypeScript, and Tailwind CSS.
 
-![Book Archive Demo](https://via.placeholder.com/800x400/007eb9/ffffff?text=Kindle+Book+Archive)
+![Book Archive](https://via.placeholder.com/800x400/f7f4ed/2a2a2a?text=Book+Archive)
 
 ## ✨ Features
 
-- **🔍 Fast Book Search**: Lightning-fast book search with intelligent caching
-- **🤖 AI Summaries**: Get instant AI-generated book summaries
+- **🚀 Lightning Fast**: Optimized search with caching and performance enhancements
 - **📱 Responsive Design**: Beautiful Kindle-inspired UI that works on all devices
-- **⚡ Performance Optimized**: Built with React Query, caching, and virtualization
-- **🎨 Smooth Animations**: Framer Motion animations for delightful interactions
-- **📖 Book Details**: View covers, authors, file sizes, and formats
-- **⬇️ Direct Downloads**: One-click downloads from Anna's Archive
-- **🎯 Pagination**: Efficient pagination for large result sets
+- **🎨 Smooth Animations**: Delightful animations and transitions throughout
+- **🔍 Advanced Search**: Search by title, author, ISBN, or keywords
+- **📖 AI Summaries**: Generate book summaries using AI (Gemini API)
+- **💾 Smart Caching**: Session-based caching for improved performance
+- **♿ Accessible**: Built with accessibility in mind
+- **🌐 SEO Optimized**: Proper meta tags and structured data
 
-## 🚀 Technology Stack
+## 🛠️ Tech Stack
 
-### Backend
-- **Express.js** - Fast, unopinionated web framework
-- **Node.js** - JavaScript runtime
-- **Cheerio** - Server-side HTML parsing
-- **Node-Cache** - In-memory caching for performance
-- **Axios** - HTTP client for external API calls
-- **Helmet** - Security middleware
-- **Compression** - Response compression
-- **Rate Limiting** - API protection
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: Custom Kindle-inspired design system
+- **API**: Anna's Archive for book data
+- **AI**: Google Gemini for book summaries
+- **Deployment**: Vercel-ready
 
-### Frontend
-- **React 18** - Modern React with TypeScript
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Smooth animations and transitions
-- **React Query** - Powerful data fetching and caching
-- **Lucide React** - Beautiful icons
-
-## 🎨 Design Philosophy
-
-The application follows Kindle's design principles:
-
-- **Clean Typography** - Inter and Crimson Text fonts for readability
-- **Warm Color Palette** - Cream backgrounds with charcoal text
-- **Minimal Interface** - Focus on content with subtle shadows
-- **Smooth Interactions** - Gentle animations and hover effects
-- **Mobile-First** - Responsive design that scales beautifully
-
-## 🛠️ Installation & Setup
+## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 16+ 
+
+- Node.js 18+ 
 - npm or yarn
 
-### 1. Clone the Repository
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/book-archive.git
+   cd book-archive
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.local.example .env.local
+   ```
+   
+   Edit `.env.local` and add your Gemini API key (optional):
+   ```
+   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📦 Build and Deploy
+
+### Local Build
+
 ```bash
-git clone https://github.com/Brajesh2022/Book-1.git
-cd Book-1
+npm run build
+npm start
 ```
 
-### 2. Install Dependencies
-```bash
-# Install backend dependencies
-npm install
+### Deploy to Vercel
 
-# Install frontend dependencies
-cd client
-npm install
-cd ..
-```
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
 
-### 3. Environment Configuration
-Create a `.env` file in the root directory:
-```env
-NODE_ENV=development
-PORT=5000
-CLIENT_URL=http://localhost:3000
+2. **Deploy on Vercel**
+   - Visit [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Add environment variables in Vercel dashboard
+   - Deploy!
 
-# Optional: Add Gemini API key for AI summaries
-GEMINI_API_KEY=your_gemini_api_key_here
+## 🎨 Design System
 
-# Cache Configuration
-CACHE_TTL=600
-```
+Our Kindle-inspired design system includes:
 
-### 4. Start the Application
-```bash
-# Start both backend and frontend concurrently
-npm run dev
+### Colors
+- **Paper**: `#f7f4ed` - Warm paper background
+- **Text**: `#2a2a2a` - Dark reading text
+- **Accent**: `#e47833` - Orange highlight color
+- **Border**: `#ddd6c1` - Subtle borders
+- **Muted**: `#767676` - Secondary text
 
-# Or start them separately:
-# Backend only
-npm run server
+### Typography
+- **Primary**: Crimson Text (serif) for reading
+- **Secondary**: Inter (sans-serif) for UI
 
-# Frontend only (in another terminal)
-npm run client
-```
+### Components
+- Custom book cards with hover animations
+- Pagination with smooth transitions
+- Loading states with branded animations
+- Error handling with helpful messages
 
-The application will be available at:
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:5000
+## 🔧 Configuration
 
-## 📁 Project Structure
+### Tailwind CSS
 
-```
-├── server.js              # Express.js backend server
-├── package.json           # Backend dependencies
-├── .env                   # Environment variables
-├── client/                # React frontend
-│   ├── src/
-│   │   ├── components/    # React components
-│   │   │   ├── SearchBar.tsx
-│   │   │   ├── BookCard.tsx
-│   │   │   ├── Pagination.tsx
-│   │   │   ├── LoadingGrid.tsx
-│   │   │   └── SummaryModal.tsx
-│   │   ├── services/      # API services
-│   │   │   └── api.ts
-│   │   ├── types/         # TypeScript definitions
-│   │   │   └── index.ts
-│   │   ├── App.tsx        # Main React component
-│   │   ├── index.tsx      # React entry point
-│   │   └── index.css      # Tailwind CSS styles
-│   ├── tailwind.config.js # Tailwind configuration
-│   ├── postcss.config.js  # PostCSS configuration
-│   └── package.json       # Frontend dependencies
-└── README.md              # This file
-```
+The design system is built into the Tailwind configuration with custom colors and animations:
 
-## 🔧 API Endpoints
-
-### Search Books
-```
-GET /api/search?q={query}&page={page}
-```
-Search for books with pagination support.
-
-### Get Book Summary
-```
-POST /api/summarize
-Content-Type: application/json
-
-{
-  "title": "Book Title",
-  "author": "Author Name"
+```javascript
+// tailwind.config.js
+colors: {
+  kindle: {
+    paper: '#f7f4ed',
+    text: '#2a2a2a',
+    accent: '#e47833',
+    // ... more colors
+  }
 }
 ```
-Generate AI-powered book summary.
 
-### Health Check
-```
-GET /api/health
-```
-Check server status and cache information.
+### API Routes
 
-## 🎯 Performance Features
+- `/api/search` - Book search functionality
+- `/api/summary` - AI-generated book summaries
 
-- **Server-side Caching**: 10-minute TTL for search results
-- **React Query**: Client-side caching and background refetching
-- **Code Splitting**: Lazy loading for optimal bundle size
-- **Image Optimization**: Lazy loading with fallbacks
-- **Compression**: Gzip compression for all responses
-- **Rate Limiting**: Protection against API abuse
+## 🌟 Features in Detail
 
-## 🌟 Key Components
+### Book Search
+- Real-time search with multiple data sources
+- Intelligent caching for improved performance
+- Pagination for large result sets
+- Error handling with retry mechanisms
 
-### SearchBar
-- Real-time search with debouncing
-- Keyboard navigation support
-- Loading states and animations
+### AI Summaries
+- Integration with Google Gemini API
+- Contextual book summaries
+- Fallback handling for API failures
+- Smart loading states
 
-### BookCard
-- Hover animations and transitions
-- Image lazy loading with fallbacks
-- Format badges and file size display
-- AI summary integration
-
-### Pagination
-- Smart page number generation
-- Keyboard and click navigation
-- Loading state handling
-
-### SummaryModal
-- Smooth modal animations
-- Escape key and backdrop click handling
-- AI summary loading states
-
-## 🔮 Future Enhancements
-
-- [ ] Advanced search filters (format, size, date)
-- [ ] User favorites and reading lists
-- [ ] Dark mode support
-- [ ] Offline reading capabilities
-- [ ] Social sharing features
-- [ ] Advanced AI features (recommendations, reviews)
-- [ ] Multi-language support
-- [ ] Reading progress tracking
+### Performance Optimizations
+- Image optimization with Next.js Image component
+- Session-based caching
+- Lazy loading for better UX
+- Optimized bundle size
 
 ## 🤝 Contributing
 
+We welcome contributions! Please follow these steps:
+
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
 ## 📄 License
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- **Anna's Archive** for providing the book database
-- **Kindle** for design inspiration
-- **React Team** for the amazing framework
-- **Tailwind CSS** for the utility-first approach
-- **Framer Motion** for smooth animations
+- [Anna's Archive](https://annas-archive.org) for book data
+- [Google Gemini](https://ai.google.dev) for AI summaries
+- [Tailwind CSS](https://tailwindcss.com) for styling
+- [Next.js](https://nextjs.org) for the framework
 
 ## 📞 Support
 
 If you have any questions or need help, please:
-1. Check the existing issues
-2. Create a new issue with detailed information
-3. Contact the maintainers
+
+1. Check the [Issues](https://github.com/yourusername/book-archive/issues) page
+2. Create a new issue if needed
+3. Join our community discussions
 
 ---
 
-**Built with ❤️ and modern web technologies**
+**Built with ❤️ and lots of ☕**
